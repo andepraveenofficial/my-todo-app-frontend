@@ -1,16 +1,21 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { authApi } from '../../api/auth.api';
 
 export type UserRole = 'USER' | 'ADMIN';
 
 interface IUser {
-  id: string;
+  id?: string;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  role: UserRole;
+  roleId: string;
+  Role?: {
+    id: string;
+    name: string;
+  };
 }
 
 /* eslint-disable no-unused-vars */
@@ -31,6 +36,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+/*
 const dummyUsers: IUser[] = [
   {
     id: '1',
@@ -50,6 +56,8 @@ const dummyUsers: IUser[] = [
   },
 ];
 
+*/
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -68,20 +76,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const signin = async (email: string, password: string) => {
     try {
-      const authenticatedUser = dummyUsers.find(
-        (user) => user.email === email && user.password === password
-      );
+      const userData = { email, password };
+      const authenticatedUser = await authApi.signin(userData);
+      console.log(authenticatedUser);
 
       if (!authenticatedUser) {
         throw new Error('Invalid credentials');
       }
 
-      Cookies.set('jwtToken', 'dummyToken', { expires: 1 });
-      Cookies.set('userData', JSON.stringify(authenticatedUser), {
-        expires: 1,
-      });
-
-      setUser(authenticatedUser);
+      setUser(authenticatedUser.data.user);
       setIsLoggedIn(true);
     } catch (error) {
       console.error('Sign-in failed', error);
@@ -97,17 +100,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }) => {
     try {
       const newUser: IUser = {
-        id: Date.now().toString(),
         ...userData,
-        role: 'USER', // Default role
+        roleId: 'f1626edf-5ae2-442e-82b6-60ca84f162af', // Default USER roleId
       };
 
-      dummyUsers.push(newUser);
-
-      console.log('User signed up:', newUser);
+      await authApi.signup(newUser);
 
       // Simulate redirection to the sign-in page
-      navigate('/signin');
+      navigate('/auth/signin');
     } catch (error) {
       console.error('Sign-up failed', error);
       throw error;
@@ -123,7 +123,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const hasRole = useCallback(
     (role: UserRole): boolean => {
-      return user?.role === role;
+      return user?.roleId === role;
     },
     [user]
   );

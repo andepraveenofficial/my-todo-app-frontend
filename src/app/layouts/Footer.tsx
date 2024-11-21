@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-100 py-6 mt-8">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <div className="text-gray-600 mb-4 md:mb-0">
-          © {currentYear} MyApp. All Rights Reserved.
+          © {currentYear} TodoApp All Rights Reserved.
         </div>
         <nav className="flex items-center space-x-2">
           <a

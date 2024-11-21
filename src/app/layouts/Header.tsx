@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   return (
     <header className="flex justify-between items-center px-4 py-3 bg-white text-gray-700 shadow-md">
       <div className="text-2xl font-bold text-blue-600 hover:text-blue-800 cursor-pointer transition-colors duration-300">
-        MyApp
+        TodoApp
       </div>
 
       <nav>
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           {isLoggedIn ? (
             <>
               <li className="text-sm text-gray-600">
-                {user?.firstName} ({user?.role})
+                {user?.firstName} ({user?.Role?.name})
               </li>
               <li>
                 <Button onClick={handleLogout}>SignOut</Button>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             </>
           ) : (
             <li>
-              <Link to="/signin">
+              <Link to="/auth/signin">
                 <Button>SignIn</Button>
               </Link>
             </li>
