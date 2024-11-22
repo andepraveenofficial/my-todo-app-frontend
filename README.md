@@ -21,3 +21,7 @@
 
 - `npm run prepare`
 - `npm run dev`
+
+### Live Demo
+
+- Netlify : [https://my-daily-tasks-app.netlify.app/]
