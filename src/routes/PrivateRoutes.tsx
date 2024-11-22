@@ -19,7 +19,8 @@ const PrivateRoute: React.FC<IProtectedRouteProps> = ({
 
   // Check role-based access (if user exists)
   const hasAllowedRole =
-    allowedRoles.length === 0 || (user && allowedRoles.includes(user.role));
+    allowedRoles.length === 0 ||
+    (user && user.Role?.name && allowedRoles.includes(user.Role.name));
 
   // Unauthorized if role check fails
   if (!hasAllowedRole) {

@@ -14,7 +14,7 @@ interface IUser {
   roleId: string;
   Role?: {
     id: string;
-    name: string;
+    name: UserRole;
   };
 }
 
