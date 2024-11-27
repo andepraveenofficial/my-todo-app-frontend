@@ -29,4 +29,9 @@ export const authApi = {
     const response = await api.get('/auth/signout');
     return response.data;
   },
+
+  verifyToken: async () => {
+    const response = await api.get('/auth/verify-token');
+    return response.data;
+  },
 };

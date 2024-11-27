@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { authApi } from '../../api/auth.api';
@@ -34,7 +40,18 @@ interface AuthContextType {
   hasRole: (role: UserRole) => boolean;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// Create a default context value
+const defaultAuthContext: AuthContextType = {
+  isLoggedIn: false,
+  user: null,
+  signin: async () => Promise.resolve(),
+  signup: async () => Promise.resolve(),
+  signout: () => {},
+  hasRole: () => false,
+};
+
+// Use this default value when creating the context
+const AuthContext = createContext<AuthContextType>(defaultAuthContext);
 
 /*
 const dummyUsers: IUser[] = [
@@ -58,10 +75,24 @@ const dummyUsers: IUser[] = [
 
 */
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('jwtToken'));
+export const AuthProvider = ({ children }: { children?: React.ReactNode }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const authVerify = async () => {
+    const authenticatedUser = await authApi.verifyToken();
+
+    if (authenticatedUser.statusCode === 200) {
+      setUser(authenticatedUser.data.user);
+      setIsLoggedIn(true);
+      // Redirect to Home page after successful sign-in
+      navigate('/');
+    }
+  };
+
+  useEffect(() => {
+    authVerify();
+  }, [isLoggedIn]);
+
   const [user, setUser] = useState<IUser | null>(() => {
     try {
       const userData = Cookies.get('userData');
@@ -78,7 +109,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const userData = { email, password };
       const authenticatedUser = await authApi.signin(userData);
-      console.log(authenticatedUser);
 
       if (!authenticatedUser) {
         throw new Error('Invalid credentials');
@@ -86,6 +116,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       setUser(authenticatedUser.data.user);
       setIsLoggedIn(true);
+      // Redirect to Home page after successful sign-in
+      navigate('/');
     } catch (error) {
       console.error('Sign-in failed', error);
       throw error;
@@ -114,8 +146,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const signout = useCallback(() => {
-    Cookies.remove('jwtToken');
+  const signout = useCallback(async () => {
+    await authApi.signout();
     Cookies.remove('userData');
     setIsLoggedIn(false);
     setUser(null);
