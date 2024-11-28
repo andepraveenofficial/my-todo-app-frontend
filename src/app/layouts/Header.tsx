@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <Link to="/about">About</Link>
           </li>
 
-          {isLoggedIn && (
+          {isLoggedIn && user?.Role?.name === 'ADMIN' && (
             <li>
               <button
                 onClick={() => navigate('/dashboard')}
