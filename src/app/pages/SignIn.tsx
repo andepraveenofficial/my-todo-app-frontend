@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { AxiosError } from 'axios';
 import {
   AuthLink,
   FormButton,
@@ -26,7 +27,13 @@ const SignIn: React.FC = () => {
       await signin(email, password);
       navigate('/');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to sign in');
+      if (err instanceof AxiosError && err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Failed to sign in');
+      }
     }
   };
 
