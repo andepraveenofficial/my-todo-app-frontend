@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../lib/button/Button';
 import { IErrorPageProps } from '../../types/error.type';
+import Button from '../../library/components/Button';
 
 const ErrorPage: React.FC<IErrorPageProps> = ({ error }) => {
   const navigate = useNavigate();

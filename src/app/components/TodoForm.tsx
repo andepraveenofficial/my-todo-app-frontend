@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { FormInput } from '../../lib/form/FormInput';
-import Button from '../../lib/button/Button';
 import { Todo } from '../../api/todo.api';
+import Button from '../../library/components/Button';
 
 interface TodoFormProps {
   onSubmit: (todo: Todo) => void;
@@ -48,9 +48,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
         className="w-full p-2 border rounded mt-2"
         required
       />
-      <Button type="submit" className="mt-4">
-        Create Todo
-      </Button>
+      <Button type="submit">Create Todo</Button>
     </form>
   );
 };

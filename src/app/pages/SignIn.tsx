@@ -4,12 +4,12 @@ import { useAuth } from '../context/AuthContext';
 import { AxiosError } from 'axios';
 import {
   AuthLink,
-  FormButton,
   FormContainer,
   FormError,
   FormInput,
   PasswordInput,
 } from './../../lib/form';
+import Button from '../../library/components/Button';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -61,8 +61,9 @@ const SignIn: React.FC = () => {
         />
 
         <FormError error={error} />
-
-        <FormButton type="submit">Sign In</FormButton>
+        <Button type="submit" size="lg" fullWidth>
+          Sign In
+        </Button>
       </form>
 
       <AuthLink

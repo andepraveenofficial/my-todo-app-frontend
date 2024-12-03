@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import Button from '../../lib/button/Button';
+
 import { Todo } from '../../api/todo.api';
+import Button from '../../library/components/Button';
+import Stack from '../../library/stack/Stack';
 
 // Define status styles outside the component for better readability
 const statusStyles: Record<string, string> = {
@@ -51,15 +53,18 @@ const TodoItem: React.FC<TodoItemProps> = ({
 
         <StatusBadge status={todo.status || 'PENDING'} />
       </div>
-
-      <div className="flex space-x-3">
-        <Button onClick={() => onUpdateStatus(todo)} variant="primary">
+      <Stack>
+        <Button type="button" onClick={() => onUpdateStatus(todo)}>
           Update Status
         </Button>
-        <Button onClick={() => onDelete(todo.id || '')} variant="danger">
+        <Button
+          type="button"
+          variant="danger"
+          onClick={() => onDelete(todo.id || '')}
+        >
           Delete
         </Button>
-      </div>
+      </Stack>
     </li>
   );
 };

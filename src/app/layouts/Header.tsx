@@ -1,7 +1,9 @@
 import React from 'react';
-import Button from '../../lib/button/Button';
+// import Button from '../../lib/button/Button';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Button from '../../library/components/Button';
 
 const Header: React.FC = () => {
   const { isLoggedIn, signout, user } = useAuth();
@@ -47,13 +49,15 @@ const Header: React.FC = () => {
                 {user?.firstName} ({user?.Role?.name})
               </li>
               <li>
-                <Button onClick={handleLogout}>SignOut</Button>
+                <Button type="button" onClick={handleLogout}>
+                  SignOut
+                </Button>
               </li>
             </>
           ) : (
             <li>
               <Link to="/auth/signin">
-                <Button>SignIn</Button>
+                <Button type="button">SignIn</Button>
               </Link>
             </li>
           )}
