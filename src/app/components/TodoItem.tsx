@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import Button from '../../library/button/Button';
+import Button from '../../lib/button/Button';
 import { Todo } from '../../api/todo.api';
 
 // Define status styles outside the component for better readability

@@ -9,7 +9,7 @@ import {
   FormError,
   FormInput,
   PasswordInput,
-} from './../../library/form';
+} from './../../lib/form';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');

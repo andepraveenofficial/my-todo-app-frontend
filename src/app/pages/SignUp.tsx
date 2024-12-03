@@ -7,7 +7,7 @@ import {
   FormError,
   FormInput,
   PasswordInput,
-} from './../../library/form';
+} from './../../lib/form';
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({

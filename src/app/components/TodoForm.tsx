@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { FormInput } from '../../library/form/FormInput';
-import Button from '../../library/button/Button';
+import { FormInput } from '../../lib/form/FormInput';
+import Button from '../../lib/button/Button';
 import { Todo } from '../../api/todo.api';
 
 interface TodoFormProps {
