@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 /*
 Stack Component :
@@ -31,12 +32,12 @@ const Stack: React.FC<StackProps> = ({
     vertical: 'flex-col gap-4',
   };
 
-  // Combine all classes
-  const classes = [
+  // Combine all classes using tailwind-merge
+  const classes = twMerge([
     baseClasses,
     orientationClasses[orientation],
     className,
-  ].join(' ');
+  ]);
 
   return <div className={classes}>{children}</div>;
 };

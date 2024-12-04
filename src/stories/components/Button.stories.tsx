@@ -140,11 +140,10 @@ export const FullWidth: StoryObj<StoryProps> = {
     buttonText: 'Button',
     fullWidth: true,
   },
-  render: ({ buttonText, ...args }) => (
-    <div className="w-full">
-      <Button {...args}>{buttonText}</Button>
-    </div>
-  ),
+  parameters: {
+    layout: 'padded',
+  },
+  render: ({ buttonText, ...args }) => <Button {...args}>{buttonText}</Button>,
 };
 
 // Custom styling examples
@@ -154,9 +153,6 @@ export const WithCustomClass: StoryObj<StoryProps> = {
     className:
       'italic underline decoration-2 underline-offset-4 hover:text-blue-800',
   },
-  render: ({ buttonText, ...args }) => (
-    <div className="w-full">
-      <Button {...args}>{buttonText}</Button>
-    </div>
-  ),
+
+  render: ({ buttonText, ...args }) => <Button {...args}>{buttonText}</Button>,
 };

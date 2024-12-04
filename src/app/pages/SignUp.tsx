@@ -7,8 +7,8 @@ import {
   FormInput,
   PasswordInput,
 } from './../../lib/form';
-import Heading from '../../library/typography/Heading';
-import Button from '../../library/components/Button';
+import { Heading } from '../../library/typography';
+import { Button } from '../../library/components';
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({

@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 /*
 Button Component :
@@ -60,15 +61,15 @@ const Button: React.FC<ButtonProps> = ({
     ? 'opacity-50 cursor-not-allowed pointer-events-none'
     : 'cursor-pointer';
 
-  // Combine all classes
-  const classes = [
+  // Combine all classes using tailwind-merge
+  const classes = twMerge([
     baseClasses,
     variantClasses[variant],
     sizeClasses[size],
     widthClasses,
     stateClasses,
-    className, // Custom classes are applied last to allow overriding
-  ].join(' ');
+    className, // Custom classes will properly override defaults
+  ]);
 
   return (
     <button

@@ -1,6 +1,5 @@
 import React from 'react';
-import Paragraph from '../../library/typography/Paragraph';
-import Heading from '../../library/typography/Heading';
+import { Heading, Paragraph } from '../../library/typography';
 
 const About: React.FC = () => {
   return (

@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 /*
 Paragraph Component :
@@ -66,15 +67,15 @@ const Paragraph: React.FC<ParagraphProps> = ({
     semibold: 'font-semibold',
   };
 
-  // Combine all classes
-  const classes = [
+  // Combine all classes using tailwind-merge
+  const classes = twMerge([
     baseClasses,
     sizeClasses[size],
     weightClasses[weight],
     colorClasses[color],
     alignClasses[align],
-    className, // Custom classes are applied last to allow overriding
-  ].join(' ');
+    className, // Custom classes will properly override defaults
+  ]);
 
   return <p className={classes}>{children}</p>;
 };

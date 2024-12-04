@@ -2,7 +2,8 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import { Todo } from '../../api/todo.api';
-import Paragraph from '../../library/typography/Paragraph';
+import { Paragraph } from '../../library/typography';
+import { List } from '../../library/components';
 
 interface TodoListProps {
   todos: Todo[];
@@ -20,7 +21,7 @@ const TodoList: React.FC<TodoListProps> = ({
   }
 
   return (
-    <ul className="space-y-2">
+    <List variant="unordered" className="list-none">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -29,7 +30,7 @@ const TodoList: React.FC<TodoListProps> = ({
           onDelete={onDelete}
         />
       ))}
-    </ul>
+    </List>
   );
 };
 

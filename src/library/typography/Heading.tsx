@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 /*
 Header Component :
@@ -58,14 +59,14 @@ const Heading: React.FC<HeadingProps> = ({
     justify: 'text-justify',
   };
 
-  // Combine all classes
-  const classes = [
+  // Combine all classes using tailwind-merge
+  const classes = twMerge([
     baseClasses,
     variantClasses[variant],
     colorClasses[color],
     alignClasses[align],
-    className, // Custom classes are applied last to allow overriding
-  ].join(' '); // Filter out any falsy values before joining
+    className, // Custom classes will properly override defaults
+  ]);
 
   // Render the appropriate heading element based on variant
   const Component = variant;

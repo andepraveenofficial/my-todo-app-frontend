@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Todo, todoApi } from '../../api/todo.api';
 import TodoList from '../components/TodoList';
 import TodoForm from '../components/TodoForm';
-import Heading from '../../library/typography/Heading';
-import Paragraph from '../../library/typography/Paragraph';
+import { Heading, Paragraph } from '../../library/typography';
 
 const Home: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);

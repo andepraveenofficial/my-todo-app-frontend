@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { AxiosError } from 'axios';
-import {
-  AuthLink,
-  FormContainer,
-  FormError,
-  FormInput,
-  PasswordInput,
-} from './../../lib/form';
-import Button from '../../library/components/Button';
-import Heading from '../../library/typography/Heading';
+import { AuthLink, FormContainer, FormError } from './../../lib/form';
+import { Button } from '../../library/components';
+import { Heading } from '../../library/typography';
+import { Input } from '../../library/form';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -42,18 +37,18 @@ const SignIn: React.FC = () => {
     <FormContainer>
       <Heading className="mb-6">SignIn Form</Heading>
       <form onSubmit={handleSubmit} className="space-y-6">
-        <FormInput
-          id="email"
-          name="email"
+        <Input
           type="email"
-          required
-          placeholder="Enter Email address"
+          placeholder="Email : admin@example.com"
+          fullWidth
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
-
-        <PasswordInput
-          name="password"
+        <Input
+          type="password"
+          placeholder="Password : password123"
+          fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

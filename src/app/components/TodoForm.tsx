@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { FormInput } from '../../lib/form/FormInput';
 import { Todo } from '../../api/todo.api';
-import Button from '../../library/components/Button';
+import { Button } from '../../library/components';
+import { Input } from '../../library/form';
 
 interface TodoFormProps {
   onSubmit: (todo: Todo) => void;
@@ -30,15 +30,14 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
-      <FormInput
-        id="todo-title"
-        name="title"
+    <form onSubmit={handleSubmit} className="mb-4 max-w-2xl">
+      <Input
         type="text"
+        placeholder="Todo Title"
         value={formData.title}
         onChange={handleChange}
-        placeholder="Todo Title"
         required
+        fullWidth
       />
       <textarea
         name="description"
