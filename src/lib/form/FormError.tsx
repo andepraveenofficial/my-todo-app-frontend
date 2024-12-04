@@ -1,8 +1,9 @@
 import React from 'react';
+import Paragraph from '../../library/typography/Paragraph';
 
 interface FormErrorProps {
   error?: string;
 }
 
 export const FormError: React.FC<FormErrorProps> = ({ error }) =>
-  error ? <p className="text-red-400">{error}</p> : null;
+  error ? <Paragraph color="danger">{error}</Paragraph> : null;

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import {
   AuthLink,
-  FormButton,
   FormContainer,
   FormError,
   FormInput,
   PasswordInput,
 } from './../../lib/form';
+import Heading from '../../library/typography/Heading';
+import Button from '../../library/components/Button';
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -56,9 +57,7 @@ const SignUp: React.FC = () => {
 
   return (
     <FormContainer>
-      <h2 className="text-center text-3xl font-bold text-gray-800 mb-6">
-        SignUp Form
-      </h2>
+      <Heading className="mb-6">SignUp Form</Heading>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="flex space-x-4">
           <FormInput
@@ -109,7 +108,9 @@ const SignUp: React.FC = () => {
 
         <FormError error={error} />
 
-        <FormButton type="submit">Sign Up</FormButton>
+        <Button type="submit" fullWidth>
+          Sign Up
+        </Button>
       </form>
 
       <AuthLink

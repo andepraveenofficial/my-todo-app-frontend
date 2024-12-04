@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IErrorPageProps } from '../../types/error.type';
 import Button from '../../library/components/Button';
+import Heading from '../../library/typography/Heading';
+import Paragraph from '../../library/typography/Paragraph';
 
 const ErrorPage: React.FC<IErrorPageProps> = ({ error }) => {
   const navigate = useNavigate();
@@ -9,11 +11,11 @@ const ErrorPage: React.FC<IErrorPageProps> = ({ error }) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-red-600 mb-4">Oops!</h1>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Something went wrong
-        </h2>
-        {error && <p className="text-gray-600 mb-8">Error: {error.message}</p>}
+        <Heading className="mb-2">Oops!</Heading>
+        <Heading className="mb-2">Something went wrong</Heading>
+        {error && (
+          <Paragraph color="secondary">Error: {error.message}</Paragraph>
+        )}
         <div className="space-x-4">
           <Button onClick={() => navigate(-1)}>Go Back</Button>
           <Button variant="secondary" onClick={() => window.location.reload()}>

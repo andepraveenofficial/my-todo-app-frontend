@@ -10,6 +10,7 @@ import {
   PasswordInput,
 } from './../../lib/form';
 import Button from '../../library/components/Button';
+import Heading from '../../library/typography/Heading';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -39,9 +40,7 @@ const SignIn: React.FC = () => {
 
   return (
     <FormContainer>
-      <h2 className="text-center text-3xl font-bold text-gray-800 mb-6">
-        SignIn Form
-      </h2>
+      <Heading className="mb-6">SignIn Form</Heading>
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormInput
           id="email"

@@ -24,9 +24,9 @@ type HeadingProps = PropsWithChildren<{
 /* -----> Component <----- */
 const Heading: React.FC<HeadingProps> = ({
   children,
-  variant = 'h1',
+  variant = 'h2',
   color = 'inherit',
-  align = 'left',
+  align = 'center',
   className = '',
 }) => {
   // Base classes always applied

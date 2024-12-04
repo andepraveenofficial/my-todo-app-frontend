@@ -1,4 +1,3 @@
-export { FormButton } from './FormButton';
 export { FormContainer } from './FormContainer';
 export { FormError } from './FormError';
 export { FormInput } from './FormInput';

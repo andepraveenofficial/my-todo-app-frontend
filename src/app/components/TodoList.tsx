@@ -2,6 +2,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import { Todo } from '../../api/todo.api';
+import Paragraph from '../../library/typography/Paragraph';
 
 interface TodoListProps {
   todos: Todo[];
@@ -15,7 +16,7 @@ const TodoList: React.FC<TodoListProps> = ({
   onDelete,
 }) => {
   if (!todos.length) {
-    return <p>No todos found.</p>;
+    return <Paragraph>No todos found.</Paragraph>;
   }
 
   return (

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Todo, todoApi } from '../../api/todo.api';
 import TodoList from '../components/TodoList';
 import TodoForm from '../components/TodoForm';
+import Heading from '../../library/typography/Heading';
+import Paragraph from '../../library/typography/Paragraph';
 
 const Home: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -58,8 +60,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Todo Management</h1>
-      {error && <p className="text-red-500">{error}</p>}
+      <Heading className="mb-4">Todo Management</Heading>
+      {error && <Paragraph color="danger">{error}</Paragraph>}
       <TodoForm onSubmit={handleCreateTodo} />
       <TodoList
         todos={todos}

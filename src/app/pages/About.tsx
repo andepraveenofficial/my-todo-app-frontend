@@ -1,36 +1,38 @@
 import React from 'react';
+import Paragraph from '../../library/typography/Paragraph';
+import Heading from '../../library/typography/Heading';
 
 const About: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          <Heading className="text-4xl font-bold text-gray-800 mb-6 text-center">
             About Our Todo Management App
-          </h1>
+          </Heading>
 
           <div className="space-y-4 text-gray-600">
-            <p className="text-lg">
+            <Paragraph className="text-lg">
               Welcome to our Todo Management Application, a powerful and
               intuitive tool designed to help you stay organized and productive.
-            </p>
+            </Paragraph>
 
             <div className="bg-gray-50 p-4 rounded-md">
-              <h2 className="text-2xl font-semibold text-gray-700 mb-3">
+              <Heading color="secondary" variant="h3" align="left">
                 Our Mission
-              </h2>
-              <p>
+              </Heading>
+              <Paragraph>
                 We believe in simplifying task management and empowering
                 individuals to achieve their goals efficiently. Our application
                 provides a seamless experience for creating, tracking, and
                 managing todos.
-              </p>
+              </Paragraph>
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold text-gray-700 mb-3">
+              <Heading color="secondary" variant="h3" align="left">
                 Key Features
-              </h2>
+              </Heading>
               <ul className="list-disc list-inside space-y-2">
                 <li>Create todos with ease</li>
                 <li>Update todo status (Pending → In Progress → Completed)</li>
@@ -40,14 +42,14 @@ const About: React.FC = () => {
             </div>
 
             <div className="bg-blue-50 p-4 rounded-md">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-3">
+              <Heading color="secondary" variant="h3" align="left">
                 Tech Stack
-              </h2>
-              <p>
+              </Heading>
+              <Paragraph>
                 Built with modern web technologies including React, TypeScript,
                 and Tailwind CSS, our application provides a robust and elegant
                 solution for task management.
-              </p>
+              </Paragraph>
             </div>
           </div>
         </div>
