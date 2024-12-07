@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import {
-  AuthLink,
-  FormContainer,
-  FormError,
-  FormInput,
-  PasswordInput,
-} from './../../lib/form';
+import { AuthLink, FormContainer, FormError } from './../../lib/form';
 import { Heading } from '../../library/typography';
 import { Button } from '../../library/components';
+import { Input } from '../../library/form';
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +19,8 @@ const SignUp: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    console.log(e.target);
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -60,49 +57,53 @@ const SignUp: React.FC = () => {
       <Heading className="mb-6">SignUp Form</Heading>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="flex space-x-4">
-          <FormInput
-            id="firstName"
+          <Input
             name="firstName"
             type="text"
-            required
             placeholder="First Name"
+            fullWidth
             value={formData.firstName}
             onChange={handleChange}
+            required
           />
-          <FormInput
-            id="lastName"
+
+          <Input
             name="lastName"
             type="text"
-            required
             placeholder="Last Name"
+            fullWidth
             value={formData.lastName}
             onChange={handleChange}
+            required
           />
         </div>
-
-        <FormInput
-          id="email"
+        <Input
           name="email"
           type="email"
-          required
-          placeholder="Email address"
+          placeholder="Enter Email"
+          fullWidth
           value={formData.email}
           onChange={handleChange}
-        />
-
-        <PasswordInput
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="Password"
           required
         />
 
-        <PasswordInput
+        <Input
+          name="password"
+          type="password"
+          placeholder="Enter Password"
+          fullWidth
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+
+        <Input
           name="confirmPassword"
+          type="password"
+          placeholder="Enter Confirm Password"
+          fullWidth
           value={formData.confirmPassword}
           onChange={handleChange}
-          placeholder="Confirm Password"
           required
         />
 

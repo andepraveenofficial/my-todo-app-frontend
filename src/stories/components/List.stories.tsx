@@ -33,7 +33,7 @@ const meta: Meta<StoryProps> = {
       },
     },
     items: {
-      control: 'array',
+      control: 'object',
       description: 'List items',
     },
     className: {
