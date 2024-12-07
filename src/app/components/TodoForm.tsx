@@ -32,6 +32,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="mb-4 max-w-2xl">
       <Input
+        name="title"
         type="text"
         placeholder="Todo Title"
         value={formData.title}
